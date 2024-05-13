@@ -5,7 +5,7 @@ import bokeh.plotting
 #r = requests.get()
 
 msft = yf.Ticker("MSFT")
-#print(msft.info)
+print(msft.info)
 
 stockslist = pd.read_csv('nasdaq_screener_1715521077293.csv')
 names = 'Symbol'#Column names (what it says in the first row of the desired columns)
