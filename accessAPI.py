@@ -12,7 +12,13 @@ names = 'Symbol'#Column names (what it says in the first row of the desired colu
 
 stocks = []
 for stock in names:
-    stocks.append(yf.Ticker(stock))
+    stocks.append(yf.Ticker(stock).info)
 
-print(stocks)
+allInfo = []
+for stock in stocks:
+    info = []
+    info.append(stock['beta'], stock['marketCap'], stock['sector'], stock['industry'], stock['profitMargins'], stock['earningsGrowth'], stock['revenueGrowth'])
+    
+for stock in info:
+    print(stock)
 
