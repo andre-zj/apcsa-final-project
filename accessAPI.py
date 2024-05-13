@@ -1,6 +1,7 @@
 import requests
 import yfinance as yf
 import pandas as pd
+import bokeh.plotting
 #r = requests.get()
 
 msft = yf.Ticker("MSFT")
