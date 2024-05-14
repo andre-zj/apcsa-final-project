@@ -8,17 +8,25 @@ msft = yf.Ticker("MSFT")
 print(msft.info)
 
 stockslist = pd.read_csv('nasdaq_screener_1715521077293.csv')
-names = 'Symbol'#Column names (what it says in the first row of the desired columns)
+names_col = 'Symbol'#Column names (what it says in the first row of the desired columns)
+names = []
+for row in range(1, stockslist.shape[0]):
+    names.append(stockslist.at[row, names_col])
 
 stocks = []
-for stock in names:
-    stocks.append(yf.Ticker(stock).info)
-
 allInfo = []
-for stock in stocks:
-    info = []
-    info.append(stock['beta'], stock['marketCap'], stock['sector'], stock['industry'], stock['profitMargins'], stock['earningsGrowth'], stock['revenueGrowth'])
+for stock in names:
+    try:
+        unfiltered = yf.Ticker(stock).info
+    except:
+        print(stock + 'cannot be found')
+    stocks.append(unfiltered)
+    try:
+        allInfo.append(stock, unfiltered['beta'], unfiltered['marketCap'], unfiltered['sector'], unfiltered['industry'], unfiltered['profitMargins'], unfiltered['earningsGrowth'], unfiltered['revenueGrowth'])
+    except:
+        print(stock + ' info cannot be completed')
+
     
-for stock in info:
+for stock in allInfo:
     print(stock)
 
