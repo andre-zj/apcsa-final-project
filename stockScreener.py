@@ -1,9 +1,7 @@
 import datetime as dt
 
-file = open('stock_info.txt','t')
-
-stocklist = file.readlines()
-stocklist=stocklist.head()
+with open('stock_info.txt', 'r') as file:
+    lines = file.readlines()
 
 print('beta options: <-0.2, -0.2 to 0.2, 0.2 to 0.8, 0.8 to 1.2, 1.2 to 2.0, > 2.0')
 beta = input("what range would you like your beta to be in?")
@@ -25,7 +23,7 @@ earningsGrowth = input('what are your specifications for your earnings growth')
 
 
 screened = []
-for line in stocklist:
+for line in lines:
     #implementation not correct for most
 	#access each line in stocklist
     stock = line['symbol']
@@ -40,7 +38,8 @@ for line in stocklist:
     else: 
         cond2 = False
 	#evaluating if marketCap ration of this stock is right
-    thisPe = line
+    thisCap = line['marketCap']
+
 	#evaluating if sector of this stock is right
     
 	#evaluating if profitMargin is correct
