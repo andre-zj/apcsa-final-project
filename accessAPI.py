@@ -18,6 +18,7 @@ for stock in names:
         info = {
             'symbol': stock,
             'beta': unfiltered.get('beta', None),
+            'price': unfiltered.get('price', None),
             'marketCap': unfiltered.get('marketCap', None),
             'sector': unfiltered.get('sector', None),
             'industry': unfiltered.get('industry', None),
