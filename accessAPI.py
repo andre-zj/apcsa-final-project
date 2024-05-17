@@ -1,6 +1,8 @@
 import yfinance as yf
 import pandas as pd
 
+print(yf.Ticker('MSFT').info)
+
 stockslist = pd.read_csv('nasdaq_screener_1715521077293.csv')
 names_col = 'Symbol'
 names = []
@@ -26,7 +28,7 @@ for stock in names:
         }
         allInfo.append(info)
     except Exception as e:
-        print(f"Error retrieving info for {stock}: {e}")
+        #print(f"Error retrieving info for {stock}: {e}")
         counter += 1
     
 print(counter)
