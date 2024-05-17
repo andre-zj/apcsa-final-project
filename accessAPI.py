@@ -1,7 +1,7 @@
 import yfinance as yf
 import pandas as pd
 
-print(yf.Ticker('MSFT').info)
+#print(yf.Ticker('MSFT').info)
 
 stockslist = pd.read_csv('nasdaq_screener_1715521077293.csv')
 names_col = 'Symbol'
@@ -18,7 +18,7 @@ for stock in names:
         info = {
             'symbol': stock,
             'beta': unfiltered.get('beta', None),
-            'price': unfiltered.get('price', None),
+            'currentPrice': unfiltered.get('currentPrice', None),
             'marketCap': unfiltered.get('marketCap', None),
             'sector': unfiltered.get('sector', None),
             'industry': unfiltered.get('industry', None),
