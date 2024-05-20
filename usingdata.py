@@ -37,6 +37,7 @@ earningsGrowth = int(input('what are your specifications for your earnings growt
 
 
 screened = []
+counter = 0
 for stock in allinfo:
     #implementation not correct for most
 	#access each line in stocklist
@@ -44,57 +45,61 @@ for stock in allinfo:
     #save name/ticker as stock
 	
 	#evaluating beta values of this stock is right
-    if (stock['beta'] > betalower and stock['beta'] < betaupper):
-        cond1 = True
-    else:
-        cond1 = False
-	#evaluating if price of this stock is right
-    thisPrice = stock['currentPrice'] #doesn't exist yet
-    if(thisPrice > pricelower and thisPrice < priceupper): 
-        cond2 = True
-    else: 
-        cond2 = False
-	#evaluating if marketCap ration of this stock is right
-    if (marketCap == 'micro' and stock['marketCap'] < 250000000):
-        cond3 = True
-    elif (marketCap == 'small' and stock['marketCap'] < 2000000000 and stock['marketCap'] > 250000000):
-        cond3 = True
-    elif (marketCap == 'medium' and stock['marketCap'] > 2000000000 and stock['marketCap'] < 10000000000):
-        cond3 = True
-    elif (marketCap == 'large' and stock['marketCap'] > 10000000000 and stock['marketCap'] < 200000000000):
-        cond3 = True
-    elif (marketCap == 'mega' and stock['marketCap'] > 200000000000):
-        cond3 = True
-    else:
-        cond3 = False
-	#evaluating if sector of this stock is right
-    if (stock['sector'] == sector):
-        cond4 = True
-    else:
-        cond4 = False
-    #evaluating if industry is correct
-    if (stock['industry'] > industry):
-        cond5 = True
-    else:
-        cond5 = False
-    #evaluating if profitMargin is correct
-    if (stock['profitMargins'] > profitMargin):
-        cond6 = True
-    else:
-        cond6 = False
-	#evaluating if revenueChange is correct
-    if (stock['revenueGrowth'] > revenueChange):
-        cond7 = True
-    else:
-        cond7 = False
-	#evaluating if earningsGrowth is correct
-    if (stock['earningsGrowth'] > earningsGrowth):
-        cond8 = True
-    else:
-        cond8 = False
+    try:
+        if (stock['beta'] > betalower and stock['beta'] < betaupper):
+            cond1 = True
+        else:
+            cond1 = False
+        #evaluating if price of this stock is right
+        if(stock['currentPrice'] > pricelower and stock['currentPrice'] < priceupper): 
+            cond2 = True
+        else: 
+            cond2 = False
+        #evaluating if marketCap ration of this stock is right
+        if (marketCap == 'micro' and stock['marketCap'] < 250000000):
+            cond3 = True
+        elif (marketCap == 'small' and stock['marketCap'] < 2000000000 and stock['marketCap'] > 250000000):
+            cond3 = True
+        elif (marketCap == 'medium' and stock['marketCap'] > 2000000000 and stock['marketCap'] < 10000000000):
+            cond3 = True
+        elif (marketCap == 'large' and stock['marketCap'] > 10000000000 and stock['marketCap'] < 200000000000):
+            cond3 = True
+        elif (marketCap == 'mega' and stock['marketCap'] > 200000000000):
+            cond3 = True
+        else:
+            cond3 = False
+        #evaluating if sector of this stock is right
+        if (stock['sector'] == sector):
+            cond4 = True
+        else:
+            cond4 = False
+        #evaluating if industry is correct
+        if (stock['industry'] > industry):
+            cond5 = True
+        else:
+            cond5 = False
+        #evaluating if profitMargin is correct
+        if (stock['profitMargins'] > profitMargin):
+            cond6 = True
+        else:
+            cond6 = False
+        #evaluating if revenueChange is correct
+        if (stock['revenueGrowth'] > revenueChange):
+            cond7 = True
+        else:
+            cond7 = False
+        #evaluating if earningsGrowth is correct
+        if (stock['earningsGrowth'] > earningsGrowth):
+            cond8 = True
+        else:
+            cond8 = False
+        if (cond1 == True and cond2 == True and cond3 == True and cond4 == True and cond5 == True and cond6 == True and cond7 == True and cond8 == True):
+            screened.append(stock)
+    except Exception as e:
+        counter += 1
+        #print(f"{stockname} has noneType data")
 
-
-
+print(screened)
 
 
 
