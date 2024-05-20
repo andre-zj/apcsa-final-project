@@ -1,6 +1,8 @@
 import ast
 import datetime as dt
-with open('stock_info.txt', 'r') as file:
+import pandas as pd
+
+with open('stock_info.txt', 'r', encoding='utf-8', errors='ignore') as file:
     lines = file.readlines()
 
 allinfo = []
@@ -16,24 +18,24 @@ for line in lines:
     info = ast.literal_eval(line)
     allinfo.append(info)
 
-betalower = int(input('Enter Lower Limit for Beta'))
-betaupper = int(input('Enter upper limit for Beta'))
+betalower = float(input('Enter lower Limit for Beta:\n'))
+betaupper = float(input('Enter upper limit for Beta:\n'))
 
-pricelower = int(input("what price must your share price be greater than?"))
-priceupper = int(input("what price must your share price be less than?"))
+pricelower = float(input("what price must your share price be greater than?\n"))
+priceupper = float(input("what price must your share price be less than?\n"))
 
 print('marketCap options: micro, small, mid, large, mega')
-marketCap = input("what must your marketCap be greater than?")#adjust limits later
+marketCap = input("what must your marketCap be:\n")#adjust limits later
 
-sector = input("what sector do you want your stock to be in?")
+sector = input("what sector do you want your stock to be in?\n")
 
-industry = input("what industry do you want your stock to be in?")
+industry = input("what industry do you want your stock to be in?\n")
 
-profitMargin = int(input("what are your specifications for your gross profit margin?"))
+profitMargin = float(input("what are your specifications for your gross profit margin?\n"))
 
-revenueChange = int(input("what are your specifications for your total revenue change"))
+revenueChange = float(input("what are your specifications for your total revenue change\n"))
 
-earningsGrowth = int(input('what are your specifications for your earnings growth'))
+earningsGrowth = float(input('what are your specifications for your earnings growth\n'))
 
 
 screened = []
