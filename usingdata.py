@@ -39,6 +39,15 @@ earningsGrowth = int(input('what are your specifications for your earnings growt
 screened = []
 counter = 0
 for stock in allinfo:
+    r1 = input('Do you want to factor in beta? (y/n): ')
+    r2 = input('Do you want to factor in stock price? (y/n): ')
+    r3 = input('Do you want to factor in market cap? (y/n): ')
+    r4 = input('Do you want to factor in sector? (y/n): ')
+    r5 = input('Do you want to factor in industry? (y/n): ')
+    r6 = input('Do you want to factor in profit margin? (y/n): ')
+    r7 = input('Do you want to factor in revenue change? (y/n): ')
+    r8 = input('Do you want to factor in earnings growth? (y/n): ')
+
     #implementation not correct for most
 	#access each line in stocklist
     stockname = stock['symbol']
