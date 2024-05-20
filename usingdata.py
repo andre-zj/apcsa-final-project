@@ -55,20 +55,20 @@ for stock in allinfo:
     else: 
         cond2 = False
 	#evaluating if marketCap ration of this stock is right
-    if (marketCap = 'micro' and stock['marketCap'] < 250000000):
+    if (marketCap == 'micro' and stock['marketCap'] < 250000000):
         cond3 = True
-    elif (marketCap = 'small' and stock['marketCap'] < 2000000000 and stock['marketCap'] > 250000000):
+    elif (marketCap == 'small' and stock['marketCap'] < 2000000000 and stock['marketCap'] > 250000000):
         cond3 = True
-    elif (marketCap = 'medium' and stock['marketCap'] > 2000000000 and stock['marketCap'] < 10000000000):
+    elif (marketCap == 'medium' and stock['marketCap'] > 2000000000 and stock['marketCap'] < 10000000000):
         cond3 = True
-    elif (marketCap = 'large' and stock['marketCap'] > 10000000000 and stock['marketCap'] < 200000000000):
+    elif (marketCap == 'large' and stock['marketCap'] > 10000000000 and stock['marketCap'] < 200000000000):
         cond3 = True
-    elif (marketCap = 'mega' and stock['marketCap'] > 200000000000):
+    elif (marketCap == 'mega' and stock['marketCap'] > 200000000000):
         cond3 = True
     else:
         cond3 = False
 	#evaluating if sector of this stock is right
-    if (stock['sector'] = sector):
+    if (stock['sector'] == sector):
         cond4 = True
     else:
         cond4 = False
@@ -88,7 +88,7 @@ for stock in allinfo:
     else:
         cond7 = False
 	#evaluating if earningsGrowth is correct
-	if (stock['earningsGrowth'] > earningsGrowth):
+    if (stock['earningsGrowth'] > earningsGrowth):
         cond8 = True
     else:
         cond8 = False
