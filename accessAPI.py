@@ -21,7 +21,7 @@ for stock in names:
             'currentPrice': unfiltered.get('currentPrice', None),
             'marketCap': unfiltered.get('marketCap', None),
             'sector': unfiltered.get('sector', None),
-            'industry': unfiltered.get('industry', None),
+            'industry': unfiltered.get('industry', None).replace('ó', ' '),
             'profitMargins': unfiltered.get('profitMargins', None),
             'earningsGrowth': unfiltered.get('earningsGrowth', None),
             'revenueGrowth': unfiltered.get('revenueGrowth', None)
