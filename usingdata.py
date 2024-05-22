@@ -26,8 +26,7 @@ priceupper = float(input("what price must your share price be less than?\n"))
 
 print('marketCap options: micro, small, mid, large, mega')
 marketCap = input("what must your marketCap be:\n")#adjust limits later
-
-sector = input("what sector do you want your stock to be in?\n")
+@ -31,6 +39,7 @@ sector = input("what sector do you want your stock to be in?\n")
 
 industry = input("what industry do you want your stock to be in?\n")
 
@@ -97,6 +96,4 @@ for stock in allinfo:
 	#evaluating if earningsGrowth is correct
 
 print(screened)
-
-
 
