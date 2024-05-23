@@ -32,7 +32,7 @@ endTime = datetime.now() + timedelta(duration)
 while(datetime.now() < endTime):
     for stock in portfolio:
         currentPrice = update_data(stock)
+#pushing
 
-        
 #run simulation for each stock in portfolio for this amount of time
 
