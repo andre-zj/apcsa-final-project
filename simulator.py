@@ -19,12 +19,20 @@ if(screen == "y"):
 #add various stocks to portfolio
 portfolio = []
 
+while True:
+    st = input("Enter the stock ticker of the stock you'd like to add to your portfolio (q to stop):")
+    if st != "q":
+        portfolio.append(st)
+    else:
+        break
+
 duration = int(input("Alright " + name + ", for how long do you want to run the simulation (in minutes)?"))
 
 endTime = datetime.now() + timedelta(duration)
 while(datetime.now() < endTime):
     for stock in portfolio:
         currentPrice = update_data(stock)
+
         
 #run simulation for each stock in portfolio for this amount of time
 
