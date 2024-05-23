@@ -26,9 +26,9 @@ priceupper = float(input("what price must your share price be less than?\n"))
 
 print('marketCap options: micro, small, mid, large, mega')
 marketCap = input("what must your marketCap be:\n")#adjust limits later
-@ -31,6 +39,7 @@ sector = input("what sector do you want your stock to be in?\n")
+sector = input("what sector do you want your stock to be in?\n")
 
-industry = input("what industry do you want your stock to be in?\n")
+#industry = input("what industry do you want your stock to be in?\n")
 
 profitMargin = float(input("what are your specifications for your gross profit margin?"))
 
@@ -95,13 +95,13 @@ for stock in allinfo:
     except Exception as e:
         cond4 = True
         #evaluating if industry is correct
-    try:
-        if (stock['industry'] > industry):
-            cond5 = True
-        else:
-            cond5 = False
-    except Exception as e:
-        cond5 = True
+    #try:
+    #    if (stock['industry'] > industry):
+    cond5 = True
+    #    else:
+    #        cond5 = False
+    #except Exception as e:
+    #    cond5 = True
         #evaluating if profitMargin is correct
     try:
         if (stock['profitMargins'] > profitMargin):
