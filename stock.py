@@ -1,4 +1,4 @@
-class stock: 
+class Stock: 
     def __init__ (self, t, info):
         self.ticker = t
         self.info = info

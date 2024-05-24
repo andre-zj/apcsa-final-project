@@ -2,7 +2,7 @@ from getData import get_stock_data
 from getData import update_data
 import usingdata
 import user
-import stock
+import Stock
 import yfinance as yf
 from datetime import datetime, timedelta, time
 
@@ -18,17 +18,22 @@ screen = input("Would you like to first use our stock screener? (y/n)")
 if(screen == "y"):
     usingdata.stockScreener()
 
-#add various stocks to portfolio
 portfolio = {}
 
-
 while True:
-    st = input("Enter the stock ticker of the stock you'd like to add to your portfolio (q to stop):")
-    if st != "q":
-        price = yf.Ticker(st)['currentPrice']
-        amt = input('The stock is' + price + '. How many shares would you like to buy?')
-        sto = stock(st, yf.Ticker(st))
+    st = input("Enter the stock ticker of the stock you'd like to add to your portfolio (q to stop): ")
+    if st.lower() != "q":
+        stock_info = yf.Ticker(st).info
+        if 'currentPrice' in stock_info:
+            price = stock_info['currentPrice']
+        else:
+            print("Unable to retrieve current price for this stock. Please try another ticker.")
+            continue
+
+        amt = int(input(f'The stock is ${price}. How many shares would you like to buy? '))
+        sto = Stock(st, stock_info)
         user.buy(sto, amt)
+        portfolio[st] = sto
     else:
         break
 
