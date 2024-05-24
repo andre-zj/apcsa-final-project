@@ -3,14 +3,15 @@ from getData import update_data
 import usingdata
 import user
 from datetime import datetime, timedelta
+import time
 
 print("Welcome to our stock market simulator!")
 
-name = input("What is your name?")
+name = input("What is your name?\n")
 
-balance = float(input("What would you like to set your starting balance to"))
+balance = float(input("What would you like to set your starting balance to:\n"))
 
-user = user(name, balance)
+user = user.user(name, balance)
 
 screen = input("Would you like to first use our stock screener? (y/n)")
 if(screen == "y"):

@@ -46,34 +46,46 @@ def stockScreener():
         #save name/ticker as stock
         
         #evaluating beta values of this stock is right
-        if (stock['beta'] > betalower and stock['beta'] < betaupper):
+        try:
+            if (stock['beta'] > betalower and stock['beta'] < betaupper):
+                cond1 = True
+            else:
+                cond1 = False
+        except Exception as e:
             cond1 = True
-        else:
-            cond1 = False
         #evaluating if price of this stock is right
-        thisPrice = stock['currentPrice'] #doesn't exist yet
-        if(thisPrice > pricelower and thisPrice < priceupper): 
+        try:
+            thisPrice = stock['currentPrice'] #doesn't exist yet
+            if(thisPrice > pricelower and thisPrice < priceupper): 
+                cond2 = True
+            else: 
+                cond2 = False
+        except Exception as e:
             cond2 = True
-        else: 
-            cond2 = False
         #evaluating if marketCap ration of this stock is right
-        if (marketCap == 'micro' and stock['marketCap'] < 250000000):
+        try:
+            if (marketCap == 'micro' and stock['marketCap'] < 250000000):
+                cond3 = True
+            elif (marketCap == 'small' and stock['marketCap'] < 2000000000 and stock['marketCap'] > 250000000):
+                cond3 = True
+            elif (marketCap == 'medium' and stock['marketCap'] > 2000000000 and stock['marketCap'] < 10000000000):
+                cond3 = True
+            elif (marketCap == 'large' and stock['marketCap'] > 10000000000 and stock['marketCap'] < 200000000000):
+                cond3 = True
+            elif (marketCap == 'mega' and stock['marketCap'] > 200000000000):
+                cond3 = True
+            else:
+                cond3 = False
+        except Exception as e:
             cond3 = True
-        elif (marketCap == 'small' and stock['marketCap'] < 2000000000 and stock['marketCap'] > 250000000):
-            cond3 = True
-        elif (marketCap == 'medium' and stock['marketCap'] > 2000000000 and stock['marketCap'] < 10000000000):
-            cond3 = True
-        elif (marketCap == 'large' and stock['marketCap'] > 10000000000 and stock['marketCap'] < 200000000000):
-            cond3 = True
-        elif (marketCap == 'mega' and stock['marketCap'] > 200000000000):
-            cond3 = True
-        else:
-            cond3 = False
         #evaluating if sector of this stock is right
-        if (stock['sector'] == sector):
+        try:
+            if (stock['sector'] == sector):
+                cond4 = True
+            else:
+                cond4 = False
+        except Exception as e:
             cond4 = True
-        else:
-            cond4 = False
         #evaluating if industry is correct
         #issue with odd character
         #if (stock['industry'] > industry):
@@ -81,19 +93,29 @@ def stockScreener():
         #else:
         #cond5 = False
         #evaluating if profitMargin is correct
-        if (stock['profitMargins'] > profitMargin):
+        try:
+            if (stock['profitMargins'] > profitMargin):
+                cond6 = True
+            else:
+                cond6 = False
+        except Exception as e:
             cond6 = True
-        else:
-            cond6 = False
         #evaluating if revenueChange is correct
-        if (stock['earningsGrowth'] > earningsGrowth):
+        try:
+            if (stock['earningsGrowth'] > earningsGrowth):
+                cond7 = True
+            else:
+                cond7 = False
+        except Exception as e:
             cond7 = True
-        else:
-            cond7 = False
-        if (stock['revenueGrowth'] > revenueGrowth):
+
+        try:
+            if (stock['revenueGrowth'] > revenueGrowth):
+                cond8 = True
+            else:
+                cond8 = False
+        except Exception as e:
             cond8 = True
-        else:
-            cond8 = False
         #evaluating if earningsGrowth is correct
         
         if(cond1 and cond2 and cond3 and cond4 and cond6 and cond7 and cond8):
