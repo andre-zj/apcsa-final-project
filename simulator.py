@@ -2,8 +2,9 @@ from getData import get_stock_data
 from getData import update_data
 import usingdata
 import user
-from datetime import datetime, timedelta
-import time
+import stock
+import yfinance as yf
+from datetime import datetime, timedelta, time
 
 print("Welcome to our stock market simulator!")
 
@@ -24,8 +25,10 @@ portfolio = {}
 while True:
     st = input("Enter the stock ticker of the stock you'd like to add to your portfolio (q to stop):")
     if st != "q":
-        portfolio.append(st)
-        #add objects and make dictionary with share number
+        price = yf.Ticker(st)['currentPrice']
+        amt = input('The stock is' + price + '. How many shares would you like to buy?')
+        sto = stock(st, yf.Ticker(st))
+        user.buy(sto, amt)
     else:
         break
 
