@@ -2,9 +2,31 @@ from getData import get_stock_data
 from getData import update_data
 import usingdata
 import user
-import Stock
+#import Stock as s
 import yfinance as yf
 from datetime import datetime, timedelta, time
+
+#import yfinance as yf
+class Stock: 
+    def __init__ (self, t):
+        self.ticker = t
+        self.info = yf.Ticker(t)
+        self.history = self.info.history(period='1d', interval='1m')
+        self.price = self.history['Close'].iat[0]
+        self.minute = 0
+    
+    def update (self):
+        if (self.minute < 390):
+            self.minute +=1
+            self.price = self.history.iat[self.minute, 1]
+        else:
+            print('day end!')
+    
+    def reset (self):
+        self.history = self.info.history(period='1d', interval="1m")
+        self.price = self.history.iat[0, 1]
+        self.minute = 0
+
 
 print("Welcome to our stock market simulator!")
 
@@ -31,7 +53,7 @@ while True:
             continue
 
         amt = int(input(f'The stock is ${price}. How many shares would you like to buy? '))
-        sto = Stock(st, stock_info)
+        sto = Stock(st)
         user.buy(sto, amt)
         portfolio[st] = sto
     else:
@@ -42,7 +64,7 @@ duration = int(input("Alright " + name + ", for how long do you want to run the 
 
 endTime = datetime.now() + timedelta(duration)
 while(datetime.now() < endTime):
-    for st in portfolio:
+    for st in user.stocks:
         st.update()
         current_price = st.price
         print(f"Updated price of {st.ticker}: {current_price}")

@@ -6,16 +6,22 @@ class user:
         self.stocks = []
     
     def buy(self, stock, amount):
-        self.portfolio[stock.ticker] +=amount
-        balance -= stock.price * amount
-        if self.stocks.index(stock) == -1:
+        if stock.ticker in self.portfolio:
+            self.portfolio[stock.ticker] += amount
+        else:
+            self.portfolio[stock.ticker] = amount
+        self.balance -= stock.price * amount
+        if stock not in self.stocks:
             self.stocks.append(stock)
     
     def buy2(self, stock, money):
         amount = int(money/stock)
-        self.portfolio[stock.ticker] += amount
+        if stock.ticker in self.portfolio:
+            self.portfolio[stock.ticker] += amount
+        else:
+            self.portfolio[stock.ticker] = amount
         balance -= stock.price * amount
-        if self.stocks.index(stock) == -1:
+        if stock not in self.stocks:
             self.stocks.append(stock)
     
     def sell(self, stock, amount):
