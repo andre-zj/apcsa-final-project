@@ -4,7 +4,8 @@ import usingdata
 import user
 #import Stock as s
 import yfinance as yf
-from datetime import datetime, timedelta, time
+from datetime import datetime, timedelta
+import time
 
 #import yfinance as yf
 class Stock: 
@@ -85,6 +86,7 @@ while(datetime.now() < endTime):
     time.sleep(60) 
 
 print(f"Final balance: {user.balance}")
+print()
 print("Final portfolio:")
 for ticker, amount in user.portfolio.items():
     print(f"{ticker}: {amount} shares")
