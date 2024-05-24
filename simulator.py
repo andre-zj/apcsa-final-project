@@ -31,9 +31,31 @@ duration = int(input("Alright " + name + ", for how long do you want to run the 
 
 endTime = datetime.now() + timedelta(duration)
 while(datetime.now() < endTime):
-    for stock in portfolio:
-        currentPrice = update_data(stock)
-#pushing
+    for st in portfolio:
+        st.update()
+        current_price = st.price
+        print(f"Updated price of {st.ticker}: {current_price}")
+
+        initial_price = st.history['Close'][0]
+
+        if current_price <= initial_price * 0.98:
+            amount_to_buy = 10
+            if amount_to_buy > 0:
+                user.buy(st, amount_to_buy)
+                print(f"Bought {amount_to_buy} shares of {st.ticker} at {current_price}")
+
+        if current_price >= initial_price * 1.02:
+            if st.ticker in user.portfolio and user.portfolio[st.ticker] > 0:
+                user.sell(st, user.portfolio[st.ticker])
+                print(f"Sold all shares of {st.ticker} at {current_price}")
+
+    time.sleep(60) 
+
+print(f"Final balance: {user.balance}")
+print("Final portfolio:")
+for ticker, amount in user.portfolio.items():
+    print(f"{ticker}: {amount} shares")
+
 
 #run simulation for each stock in portfolio for this amount of time
 
