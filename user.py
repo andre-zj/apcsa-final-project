@@ -38,3 +38,5 @@ class user:
         else:
             self.portfolio[stock.ticker] = 0
             balance += stock.price * amount
+
+#keep share options/delete price based
