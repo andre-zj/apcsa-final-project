@@ -18,12 +18,14 @@ if(screen == "y"):
     usingdata.stockScreener()
 
 #add various stocks to portfolio
-portfolio = []
+portfolio = {}
+
 
 while True:
     st = input("Enter the stock ticker of the stock you'd like to add to your portfolio (q to stop):")
     if st != "q":
         portfolio.append(st)
+        #add objects and make dictionary with share number
     else:
         break
 
