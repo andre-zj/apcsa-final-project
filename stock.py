@@ -14,6 +14,6 @@ class stock:
             print('day end!')
     
     def reset (self):
-        self.history = info.history(period='1d', interval="1m")
+        self.history = self.info.history(period='1d', interval="1m")
         self.price = self.history.iat[0, 1]
         self.minute = 0
